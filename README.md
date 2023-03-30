@@ -32,10 +32,10 @@ A `Promise` that resolves when the archive is created.
 import compress from 'zip-tar-util-js'
 
 // Compress a directory into a zip file
-compress('/path/to/source', '/path/to/target.zip');
+compress("/path/to/source", "/path/to/target.zip", "zip");
 
 // Compress a directory into a tar file
-compress('/path/to/source', '/path/to/target.tar');
+compress("/path/to/source", "/path/to/target.tar", "tar");
 ```
 
 ### decompress(sourceFile, targetDir)
