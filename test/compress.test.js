@@ -13,6 +13,7 @@ describe("compress", () => {
   const testFilePath1 = join(testDir, "testFile1.txt");
   const testFilePath2 = join(testDir, "testFile2.txt");
   const zipPath = join(__dirname, "testDir.zip");
+  const tarPath = join(__dirname, "testDir.tar");
 
   beforeAll(() => {
     // create test directory and files
@@ -25,6 +26,7 @@ describe("compress", () => {
 
   afterAll(() => {
     // remove test directory and files
+    unlinkSync(tarPath);
     unlinkSync(zipPath);
     unlinkSync(testFilePath1);
     unlinkSync(testFilePath2);
@@ -48,6 +50,26 @@ describe("compress", () => {
       await compress(invalidDirPath, zipPath);
     } catch (error) {
       expect(error.message).toBe("Source directory does not exist");
+    }
+  });
+
+  test("should compress a directory into a tar file", async () => {
+    try {
+      await compress(testDir, tarPath, "tar");
+      expect(existsSync(tarPath)).toBe(true);
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  });
+
+  test("should throw an error if source directory does not exist", async () => {
+    const invalidTarPath = join(__dirname, `invalidDir`);
+    const tarPath = join(__dirname, "invalidDir.tar");
+    try {
+      await compress(invalidTarPath, tarPath);
+    } catch (error) {
+      expect(error.message).toBe(`Source directory does not exist`);
     }
   });
 });
