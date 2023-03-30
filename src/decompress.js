@@ -13,14 +13,26 @@ async function decompress(sourceFile, destDir) {
   const ext = extname(sourceFile).toLowerCase();
   try {
     if (!fs.existsSync(sourceFile)) {
-      throw new Error("Source zip file does not exist");
+      switch (ext) {
+        case ".zip":
+          throw new Error("Source zip file does not exist");
+        case ".tar":
+          throw new Error("Source tar file does not exist");
+        default:
+          throw new Error("Source file does not exist");
+      }
     }
-    if (ext === ".zip") {
-      await decompressZip(sourceFile, destDir);
-    } else if (ext === ".tar" || ext === ".tar.gz" || ext === ".tgz") {
-      await decompressTar(sourceFile, destDir);
-    } else {
-      throw new Error(`Unsupported archive format: ${ext}`);
+    switch (ext) {
+      case ".zip":
+        await decompressZip(sourceFile, destDir);
+        break;
+      case ".tar":
+      case ".tar.gz":
+      case ".tgz":
+        await decompressTar(sourceFile, destDir);
+        break;
+      default:
+        throw new Error(`Unsupported archive format: ${ext}`);
     }
   } catch (error) {
     throw error;

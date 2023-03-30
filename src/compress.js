@@ -1,5 +1,5 @@
-import { existsSync, readdirSync, statSync } from "fs";
-import { join, basename } from "path";
+import { existsSync, readdirSync } from "fs";
+import { join } from "path";
 import AdmZip from "adm-zip";
 import { create } from "tar";
 import { promisify } from "util";
