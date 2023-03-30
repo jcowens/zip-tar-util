@@ -1,7 +1,7 @@
-const fs = require("fs");
-const { extname } = require("path");
-const AdmZip = require("adm-zip");
-const { extract } = require("tar");
+import fs from "fs";
+import { extname } from "path";
+import AdmZip from "adm-zip";
+import { extract } from "tar";
 
 /**
  * Decompresses a zip or tar archive into a directory

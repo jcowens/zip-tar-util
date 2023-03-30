@@ -1,7 +1,7 @@
-const { existsSync, readdirSync } = require("fs");
-const { join } = require("path");
-const AdmZip = require("adm-zip");
-const { create } = require("tar");
+import { existsSync, readdirSync } from "fs";
+import { join } from "path";
+import AdmZip from "adm-zip";
+import { create } from "tar";
 
 /**
  * Compresses a directory into a zip or tar archive
@@ -10,19 +10,26 @@ const { create } = require("tar");
  * @param {string} [archiveType='zip'] - The type of archive to create (zip or tar)
  * @returns {Promise<void>}
  */
-async function compress(sourceDir, destFile, archiveType = "zip") {
+async function compress(sourceDir, destFile, archiveType) {
   try {
-    if (!["zip", "tar"].includes(archiveType)) {
+    if (archiveType && !["zip", "tar"].includes(archiveType)) {
       throw new Error(`Invalid archive type: ${archiveType}`);
     }
     if (!existsSync(sourceDir)) {
       throw new Error("Source directory does not exist");
     }
 
-    if (archiveType === "zip") {
-      await compressDirToZip(sourceDir, destFile);
+    if (archiveType === "zip" || !archiveType) {
+      // If archiveType is not supplied, default to zip
+      const outputFileName = destFile.endsWith(".zip")
+        ? destFile
+        : `${destFile}.zip`;
+      await compressDirToZip(sourceDir, outputFileName);
     } else {
-      await compressDirToTar(sourceDir, destFile);
+      const outputFileName = destFile.endsWith(".tar")
+        ? destFile
+        : `${destFile}.tar`;
+      await compressDirToTar(sourceDir, outputFileName);
     }
   } catch (error) {
     throw error;
@@ -47,12 +54,16 @@ async function compressDirToZip(sourceDir, destFile) {
       const filePath = join(sourceDir, file);
       zip.addLocalFile(filePath);
     });
+
+    // Write the zip archive to the destination file
+    await zip.writeZip(destFile);
   } catch (err) {
     throw new Error(`Error zipping file`);
   }
 
-  // Write the zip archive to the destination file
-  await zip.writeZip(destFile);
+  if (!existsSync(destFile)) {
+    console.error(`Zip file ${destFile} not found`);
+  }
 }
 
 /**
