@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/jcowens/zip-tar-util-js.git"
   },
-  "author": "",
+  "author": "jcowens",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jcowens/zip-tar-util-js/issues"
