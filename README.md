@@ -12,13 +12,21 @@ npm install zip-tar-util-js
 
 ## Usage
 
-### compress(sourceDir, destPath, [archiveType])
+## compress(sourceDir, destFile, [archiveType])
 
-This function compresses a directory and saves the result in the target file in either zip or tar format.
+Compresses a directory into either a zip or tar archive and saves it to the specified destination file.
 
-- `sourceDir`: The path to the directory to compress.
-- `destPath`: The path to the archive file to create.
-- `archiveType` (optional): The type of archive to create. Must be one of the following: 'zip', 'tar', 'tar.gz', or 'tgz'. Defaults to 'zip' if not specified.
+### Parameters:
+
+- `sourceDir` - A string representing the path to the source directory.
+- `destFile` - A string representing the path to the destination archive file.
+- `archiveType` (optional) - A string representing the type of archive to create. Must be one of the following: `'zip'`, `'tar'` or `undefined` (defaults to `'zip'` if not specified).
+
+### Returns:
+
+A `Promise` that resolves when the archive is created.
+
+### Example:
 
 ```
 import compress from 'zip-tar-util-js'
@@ -36,6 +44,8 @@ This function decompresses the source archive file into the target directory.
 
 - `sourceFile` - The path to the archive file to decompress.
 - `targetDir` - The path to the directory where the archive file will be decompressed.
+
+### Example:
 
 ```
 import decompress from 'zip-tar-util-js'
