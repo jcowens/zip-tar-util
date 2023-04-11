@@ -42,6 +42,8 @@ compress("/path/to/source", "/path/to/target.tar", "tar");
 
 This function decompresses the source archive file into the target directory.
 
+### Parameters:
+
 - `sourceFile` - The path to the archive file to decompress.
 - `targetDir` - The path to the directory where the archive file will be decompressed.
 
