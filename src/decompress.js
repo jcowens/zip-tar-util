@@ -35,7 +35,6 @@ async function decompress(sourceFile, destDir) {
  */
 async function decompressZip(sourceFile, destDir) {
   const zip = new AdmZip(sourceFile);
-
   // Extract all files from the zip archive to the destination directory
   zip.extractAllTo(destDir);
 }
