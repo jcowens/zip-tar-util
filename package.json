@@ -1,6 +1,6 @@
 {
   "name": "zip-tar-util",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A package for simplifying file compression and decompression",
   "type": "module",
   "main": "index.js",
