@@ -29,7 +29,7 @@ A `Promise` that resolves when the archive is created.
 ### Example:
 
 ```
-import compress from 'zip-tar-util-js'
+import compress from 'zip-tar-util'
 
 // Compress a directory into a zip file
 compress("/path/to/source", "/path/to/target.zip", "zip");
@@ -50,7 +50,7 @@ This function decompresses the source archive file into the target directory.
 ### Example:
 
 ```
-import decompress from 'zip-tar-util-js'
+import decompress from 'zip-tar-util'
 
 // Decompress a zip file into a directory
 decompress('/path/to/source.zip', '/path/to/target');
