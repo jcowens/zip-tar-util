@@ -7,7 +7,7 @@ A simple Node.js library for compressing and decompressing ZIP and TAR files.
 You can install this package using npm:
 
 ```
-npm install zip-tar-util-js
+npm install zip-tar-util
 ```
 
 ## Usage
