@@ -1,4 +1,4 @@
-# zip-tar-util-js
+# zip-tar-util
 
 A simple Node.js library for compressing and decompressing ZIP and TAR files.
 
