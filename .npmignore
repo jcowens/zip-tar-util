@@ -1,0 +1,6 @@
+.babelrc
+.gitignore
+test/
+jest.config.cjs
+.github/
+LICENSE
