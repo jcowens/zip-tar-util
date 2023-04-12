@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jcowens/zip-tar-util-js.git"
+    "url": "git+https://github.com/jcowens/zip-tar-util.git"
   },
   "author": "jcowens",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jcowens/zip-tar-util-js/issues"
+    "url": "https://github.com/jcowens/zip-tar-util/issues"
   },
-  "homepage": "https://github.com/jcowens/zip-tar-util-js#readme",
+  "homepage": "https://github.com/jcowens/zip-tar-util#readme",
   "devDependencies": {
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
